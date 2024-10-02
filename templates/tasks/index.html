@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Wellcome to Task Manager</h1>
+  <p>Tasks are waiting for you!</p>
+  <h2>Dynamic content</h2>
+  <p>The Task Manager has the following record counts:</p>
+  <ul>
+    <li><strong>Projects:</strong> {{ num_projects }}</li>
+    <li><strong>Teams:</strong> {{ num_teams }}</li>
+    <li><strong>Tasks:</strong> {{ num_tasks }}</li>
+  </ul>
+  <p>You have visited this page
+    {{ num_visits }} time{{ num_visits|pluralize }}.
+  </p>
+
+{% endblock %}
