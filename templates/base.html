@@ -16,7 +16,9 @@
     <div class="row">
         <div class="col-sm-2">
 
-            {% block sidebar %}{% endblock %}
+            {% block sidebar %}
+                {% include 'includes/sidebar.html' %}
+            {% endblock %}
 
         </div>
         <div class="col-sm-10 ">
