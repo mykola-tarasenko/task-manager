@@ -15,16 +15,16 @@
       {% for position in position_list %}
         <tr>
           <td>
-              {{ position.id }}
+            {{ position.id }}
           </td>
           <td>
-              {{ position.name }}
+            {{ position.name }}
           </td>
         </tr>
       {% endfor %}
     </table>
 
   {% else %}
-      <p>There are no positions in the service.</p>
+    <p>There are no positions in the service.</p>
   {% endif %}
 {% endblock %}
