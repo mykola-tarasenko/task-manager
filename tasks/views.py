@@ -1,7 +1,13 @@
 from django.shortcuts import render
 from django.views import generic
 
-from tasks.models import Project, Team, Task, Position
+from tasks.models import (
+    Project,
+    Team,
+    Task,
+    Position,
+    Worker,
+)
 
 
 def index(request):
@@ -35,4 +41,11 @@ class TeamListView(generic.ListView):
     model = Team
     context_object_name = "team_list"
     template_name = "tasks/team_list.html"
+    paginate_by = 5
+
+
+class WorkerListView(generic.ListView):
+    model = Worker
+    context_object_name = "worker_list"
+    template_name = "tasks/worker_list.html"
     paginate_by = 5
