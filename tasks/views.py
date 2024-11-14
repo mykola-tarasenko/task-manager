@@ -7,6 +7,7 @@ from tasks.models import (
     Task,
     Position,
     Worker,
+    TaskType,
 )
 
 
@@ -55,4 +56,11 @@ class ProjectListView(generic.ListView):
     model = Project
     context_object_name = "project_list"
     template_name = "tasks/project_list.html"
+    paginate_by = 5
+
+
+class TaskTypeListView(generic.ListView):
+    model = TaskType
+    context_object_name = "task_type_list"
+    template_name = "tasks/task_type_list.html"
     paginate_by = 5
