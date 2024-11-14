@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    Project List
+  </h1>
+
+  {% if project_list %}
+    <table class="table">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Teams</th>
+      </tr>
+
+      {% for project in project_list %}
+        <tr>
+          <td>
+            {{ project.id }}
+          </td>
+          <td>
+            {{ project.name }}
+          </td>
+          <td>
+            {{ project.description }}
+          </td>
+          <td>
+            {% for team in project.teams.all %}
+              {{ team.name }}{% if not forloop.last %}, {% endif %}
+            {% endfor %}
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+  {% else %}
+    <p>There are no projects in the service.</p>
+  {% endif %}
+{% endblock %}
