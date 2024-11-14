@@ -7,6 +7,7 @@ from .views import (
     WorkerListView,
     ProjectListView,
     TaskTypeListView,
+    TaskListView,
 )
 
 urlpatterns = [
@@ -16,6 +17,7 @@ urlpatterns = [
     path("workers/", WorkerListView.as_view(), name="worker-list"),
     path("projects/", ProjectListView.as_view(), name="project-list"),
     path("task-types/", TaskTypeListView.as_view(), name="task-type-list"),
+    path("tasks/", TaskListView.as_view(), name="task-list"),
 ]
 
 app_name = "tasks"
