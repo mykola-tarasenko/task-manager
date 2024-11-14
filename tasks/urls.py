@@ -4,7 +4,9 @@ from .views import (
     index,
     PositionListView,
     TeamListView,
-    WorkerListView, ProjectListView,
+    WorkerListView,
+    ProjectListView,
+    TaskTypeListView,
 )
 
 urlpatterns = [
@@ -13,6 +15,7 @@ urlpatterns = [
     path("teams/", TeamListView.as_view(), name="team-list"),
     path("workers/", WorkerListView.as_view(), name="worker-list"),
     path("projects/", ProjectListView.as_view(), name="project-list"),
+    path("task-types/", TaskTypeListView.as_view(), name="task-type-list"),
 ]
 
 app_name = "tasks"
