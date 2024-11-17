@@ -48,7 +48,7 @@ class Worker(AbstractUser):
 class Project(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
-    teams = models.ManyToManyField(Team, related_name="projects")
+    teams = models.ManyToManyField(Team, blank=True, null=True, related_name="projects")
 
     class Meta:
         ordering = ("name",)
