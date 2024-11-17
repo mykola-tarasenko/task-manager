@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    {{ team.name }}
+  </h1>
+
+  <hr>
+  {% if team.members.all %}
+    <p><strong>Members:</strong></p>
+    <ul>
+      {% for member in team.members.all %}
+        <li>{{ member.username }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>There are no workers yet!</p>
+  {% endif %}
+
+  <hr>
+  {% if team.projects.all %}
+    <p><strong>Projects:</strong></p>
+    <ul>
+      {% for project in team.projects.all %}
+        <li>{{ project.name }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>There are no projects yet!</p>
+  {% endif %}
+{% endblock %}
