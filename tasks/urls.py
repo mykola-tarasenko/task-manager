@@ -6,6 +6,7 @@ from .views import (
     TeamListView,
     WorkerListView,
     ProjectListView,
+    ProjectDetailView,
     TaskTypeListView,
     TaskListView,
 )
@@ -16,6 +17,7 @@ urlpatterns = [
     path("teams/", TeamListView.as_view(), name="team-list"),
     path("workers/", WorkerListView.as_view(), name="worker-list"),
     path("projects/", ProjectListView.as_view(), name="project-list"),
+    path("projects/<int:pk>/", ProjectDetailView.as_view(), name="project-detail"),
     path("task-types/", TaskTypeListView.as_view(), name="task-type-list"),
     path("tasks/", TaskListView.as_view(), name="task-list"),
 ]

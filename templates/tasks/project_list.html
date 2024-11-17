@@ -20,7 +20,7 @@
             {{ project.id }}
           </td>
           <td>
-            {{ project.name }}
+            <a href="{% url 'tasks:project-detail' pk=project.id %} ">{{ project.name }}</a>
           </td>
           <td>
             {{ project.description }}

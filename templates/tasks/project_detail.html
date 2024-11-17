@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    {{ project.name }}
+  </h1>
+
+  <p><strong>Description:</strong></p>
+  <p>{{ project.description }}</p>
+  <hr>
+  {% if project.teams %}
+    <p><strong>Teams working on it:</strong></p>
+    <ul>
+      {% for team in project.teams.all %}
+        <li>{{ team.name }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>There are no teams working on it!</p>
+  {% endif %}
+{% endblock %}

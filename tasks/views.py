@@ -59,6 +59,10 @@ class ProjectListView(generic.ListView):
     paginate_by = 5
 
 
+class ProjectDetailView(generic.DetailView):
+    model = Project
+
+
 class TaskTypeListView(generic.ListView):
     model = TaskType
     context_object_name = "task_type_list"
