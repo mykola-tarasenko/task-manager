@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    {{ task_type.name }}
+  </h1>
+
+  <hr>
+  {% if task_type.tasks.all %}
+    <p><strong>Tasks:</strong></p>
+    <ul>
+      {% for task in task_type.tasks.all %}
+        <li>{{ task.name }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>There are no tasks yet!</p>
+  {% endif %}
+{% endblock %}
