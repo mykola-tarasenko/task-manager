@@ -22,7 +22,7 @@
             {{ worker.id }}
           </td>
           <td>
-            {{ worker.username }}
+            <a href="{% url 'tasks:worker-detail' pk=worker.id %}">{{ worker.username }}</a>
           </td>
           <td>
             {{ worker.first_name }}

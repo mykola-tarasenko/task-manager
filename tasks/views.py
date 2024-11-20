@@ -56,6 +56,10 @@ class WorkerListView(generic.ListView):
     paginate_by = 5
 
 
+class WorkerDetailView(generic.DetailView):
+    model = Worker
+
+
 class ProjectListView(generic.ListView):
     model = Project
     context_object_name = "project_list"
