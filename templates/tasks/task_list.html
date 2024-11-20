@@ -24,7 +24,7 @@
             {{ task.id }}
           </td>
           <td>
-            {{ task.name }}
+            <a href="{% url 'tasks:task-detail' pk=task.id %}">{{ task.name }}</a>
           </td>
           <td>
             {{ task.description }}

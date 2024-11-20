@@ -1,3 +1,5 @@
+from rlcompleter import get_class_members
+
 from django.shortcuts import render
 from django.views import generic
 
@@ -87,3 +89,7 @@ class TaskListView(generic.ListView):
     context_object_name = "task_list"
     template_name = "tasks/task_list.html"
     paginate_by = 5
+
+
+class TaskDetailView(generic.DetailView):
+    model = Task

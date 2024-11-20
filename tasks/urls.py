@@ -12,6 +12,7 @@ from .views import (
     ProjectDetailView,
     TaskTypeListView,
     TaskListView,
+    TaskDetailView,
 )
 
 urlpatterns = [
@@ -26,6 +27,7 @@ urlpatterns = [
     path("projects/<int:pk>/", ProjectDetailView.as_view(), name="project-detail"),
     path("task-types/", TaskTypeListView.as_view(), name="task-type-list"),
     path("tasks/", TaskListView.as_view(), name="task-list"),
+    path("tasks/<int:pk>/", TaskDetailView.as_view(), name="task-detail"),
 ]
 
 app_name = "tasks"
