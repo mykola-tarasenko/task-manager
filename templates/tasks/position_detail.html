@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    {{ position.name }}
+  </h1>
+  {% if position.workers.all %}
+    <p><strong>Workers:</strong></p>
+    <ul>
+      {% for worker in position.workers.all %}
+        <li><a href="{% url 'tasks:worker-detail' pk=worker.id %}">@{{ worker.username }}</a></li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>There are no workers yet!</p>
+  {% endif %}
+{% endblock %}
