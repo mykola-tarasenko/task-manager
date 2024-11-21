@@ -10,7 +10,7 @@
     <p><strong>Members:</strong></p>
     <ul>
       {% for member in team.members.all %}
-        <li>@{{ member.username }}</li>
+        <li><a href="{% url 'tasks:worker-detail' pk=member.id %}">@{{ member.username }}</a></li>
       {% endfor %}
     </ul>
   {% else %}
@@ -22,7 +22,7 @@
     <p><strong>Projects:</strong></p>
     <ul>
       {% for project in team.projects.all %}
-        <li>{{ project.name }}</li>
+        <li><a href="{% url 'tasks:project-detail' pk=project.id %} ">{{ project.name }}</a></li>
       {% endfor %}
     </ul>
   {% else %}

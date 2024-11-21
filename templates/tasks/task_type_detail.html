@@ -10,7 +10,7 @@
     <p><strong>Tasks:</strong></p>
     <ul>
       {% for task in task_type.tasks.all %}
-        <li>{{ task.name }}</li>
+        <li><a href="{% url 'tasks:task-detail' pk=task.id %}">{{ task.name }}</a></li>
       {% endfor %}
     </ul>
   {% else %}

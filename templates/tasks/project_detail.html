@@ -12,7 +12,7 @@
     <p><strong>Teams working on it:</strong></p>
     <ul>
       {% for team in project.teams.all %}
-        <li>{{ team.name }}</li>
+        <li><a href="{% url 'tasks:team-detail' pk=team.id %}">{{ team.name }}</a></li>
       {% endfor %}
     </ul>
   {% else %}

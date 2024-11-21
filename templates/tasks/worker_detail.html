@@ -5,6 +5,6 @@
     @{{ worker.username }}
   </h1>
   <p>{{ worker.first_name }} {{ worker.last_name }}</p>
-  <p><strong>Position:</strong> {{ worker.position.name }}</p>
+  <p><strong>Position:</strong> <a href="{% url 'tasks:position-detail' pk=worker.position.id %}">{{ worker.position.name }}</a></p>
   <p><strong>Team:</strong> <a href="{% url 'tasks:team-detail' pk=worker.team.id %}">{{ worker.team }}</a></p>
 {% endblock %}
