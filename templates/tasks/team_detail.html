@@ -10,7 +10,7 @@
     <p><strong>Members:</strong></p>
     <ul>
       {% for member in team.members.all %}
-        <li>{{ member.username }}</li>
+        <li>@{{ member.username }}</li>
       {% endfor %}
     </ul>
   {% else %}
