@@ -18,7 +18,7 @@
             {{ team.id }}
           </td>
           <td>
-            {{ team.name }}
+            <a href="{% url 'tasks:team-detail' pk=team.id %}">{{ team.name }}</a>
           </td>
         </tr>
       {% endfor %}
