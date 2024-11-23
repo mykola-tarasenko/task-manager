@@ -14,11 +14,13 @@ from .views import (
     TaskTypeDetailView,
     TaskListView,
     TaskDetailView,
+    PositionCreateView,
 )
 
 urlpatterns = [
     path("", index, name="index"),
     path("positions/", PositionListView.as_view(), name="position-list"),
+    path("positions/create/", PositionCreateView.as_view(), name="position-create"),
     path("positions/<int:pk>", PositionDetailView.as_view(), name="position-detail"),
     path("teams/", TeamListView.as_view(), name="team-list"),
     path("teams/<int:pk>/", TeamDetailView.as_view(), name="team-detail"),

@@ -3,6 +3,9 @@
 {% block content %}
   <h1>
     Position List
+    <a href="{% url 'tasks:position-create' %}" class="btn btn-primary">
+      Create
+    </a>
   </h1>
 
   {% if position_list %}
