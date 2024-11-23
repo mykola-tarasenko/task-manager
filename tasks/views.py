@@ -33,8 +33,6 @@ def index(request):
 
 class PositionListView(generic.ListView):
     model = Position
-    context_object_name = "position_list"
-    template_name = "tasks/position_list.html"
     paginate_by = 5
 
 
@@ -44,8 +42,6 @@ class PositionDetailView(generic.DetailView):
 
 class TeamListView(generic.ListView):
     model = Team
-    context_object_name = "team_list"
-    template_name = "tasks/team_list.html"
     paginate_by = 5
 
 
@@ -55,8 +51,6 @@ class TeamDetailView(generic.DetailView):
 
 class WorkerListView(generic.ListView):
     model = Worker
-    context_object_name = "worker_list"
-    template_name = "tasks/worker_list.html"
     paginate_by = 5
 
 
@@ -66,8 +60,6 @@ class WorkerDetailView(generic.DetailView):
 
 class ProjectListView(generic.ListView):
     model = Project
-    context_object_name = "project_list"
-    template_name = "tasks/project_list.html"
     paginate_by = 5
 
 
@@ -90,8 +82,6 @@ class TaskTypeDetailView(generic.DetailView):
 
 class TaskListView(generic.ListView):
     model = Task
-    context_object_name = "task_list"
-    template_name = "tasks/task_list.html"
     paginate_by = 5
 
 
