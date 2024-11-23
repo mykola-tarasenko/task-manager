@@ -1,3 +1,5 @@
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.views import generic
 
@@ -11,6 +13,7 @@ from tasks.models import (
 )
 
 
+@login_required
 def index(request):
     """View function for the home page of the site."""
 
@@ -31,59 +34,59 @@ def index(request):
     return render(request, "tasks/index.html", context=context)
 
 
-class PositionListView(generic.ListView):
+class PositionListView(LoginRequiredMixin, generic.ListView):
     model = Position
     paginate_by = 5
 
 
-class PositionDetailView(generic.DetailView):
+class PositionDetailView(LoginRequiredMixin, generic.DetailView):
     model = Position
 
 
-class TeamListView(generic.ListView):
+class TeamListView(LoginRequiredMixin, generic.ListView):
     model = Team
     paginate_by = 5
 
 
-class TeamDetailView(generic.DetailView):
+class TeamDetailView(LoginRequiredMixin, generic.DetailView):
     model = Team
 
 
-class WorkerListView(generic.ListView):
+class WorkerListView(LoginRequiredMixin, generic.ListView):
     model = Worker
     paginate_by = 5
 
 
-class WorkerDetailView(generic.DetailView):
+class WorkerDetailView(LoginRequiredMixin, generic.DetailView):
     model = Worker
 
 
-class ProjectListView(generic.ListView):
+class ProjectListView(LoginRequiredMixin, generic.ListView):
     model = Project
     paginate_by = 5
 
 
-class ProjectDetailView(generic.DetailView):
+class ProjectDetailView(LoginRequiredMixin, generic.DetailView):
     model = Project
 
 
-class TaskTypeListView(generic.ListView):
+class TaskTypeListView(LoginRequiredMixin, generic.ListView):
     model = TaskType
     context_object_name = "task_type_list"
     template_name = "tasks/task_type_list.html"
     paginate_by = 5
 
 
-class TaskTypeDetailView(generic.DetailView):
+class TaskTypeDetailView(LoginRequiredMixin, generic.DetailView):
     model = TaskType
     context_object_name = "task_type"
     template_name = "tasks/task_type_detail.html"
 
 
-class TaskListView(generic.ListView):
+class TaskListView(LoginRequiredMixin, generic.ListView):
     model = Task
     paginate_by = 5
 
 
-class TaskDetailView(generic.DetailView):
+class TaskDetailView(LoginRequiredMixin, generic.DetailView):
     model = Task
