@@ -1,7 +1,8 @@
 from django import forms
 from django.contrib.auth import get_user_model
+from django.contrib.auth.forms import UserCreationForm
 
-from tasks.models import Team, Project
+from tasks.models import Team, Project, Worker
 
 
 class TeamForm(forms.ModelForm):
@@ -18,7 +19,7 @@ class TeamForm(forms.ModelForm):
 
     class Meta:
         model = Team
-        fields = ('name',)
+        fields = ("name",)
 
     def save(self, commit=True):
         team = super().save(commit=False)
@@ -34,3 +35,9 @@ class TeamForm(forms.ModelForm):
             for project in projects:
                 project.teams.add(team)
         return team
+
+
+class WorkerCreationForm(forms.ModelForm):
+    class Meta(UserCreationForm.Meta):
+        model = Worker
+        fields = UserCreationForm.Meta.fields + ("position", "team",)

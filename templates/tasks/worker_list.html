@@ -3,6 +3,9 @@
 {% block content %}
   <h1>
     Worker List
+    <a href="{% url 'tasks:worker-create' %}" class="btn btn-primary">
+      Create
+    </a>
   </h1>
 
   {% if worker_list %}
