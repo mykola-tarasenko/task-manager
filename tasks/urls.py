@@ -3,19 +3,20 @@ from django.urls import path
 from .views import (
     index,
     PositionListView,
+    PositionCreateView,
     PositionDetailView,
     TeamListView,
+    TeamCreateView,
     TeamDetailView,
     WorkerListView,
     WorkerDetailView,
     ProjectListView,
     ProjectDetailView,
     TaskTypeListView,
+    TaskTypeCreateView,
     TaskTypeDetailView,
     TaskListView,
     TaskDetailView,
-    PositionCreateView,
-    TaskTypeCreateView,
 )
 
 urlpatterns = [
@@ -24,6 +25,7 @@ urlpatterns = [
     path("positions/create/", PositionCreateView.as_view(), name="position-create"),
     path("positions/<int:pk>", PositionDetailView.as_view(), name="position-detail"),
     path("teams/", TeamListView.as_view(), name="team-list"),
+    path("teams/create/", TeamCreateView.as_view(), name="team-create"),
     path("teams/<int:pk>/", TeamDetailView.as_view(), name="team-detail"),
     path("workers/", WorkerListView.as_view(), name="worker-list"),
     path("workers/<int:pk>/", WorkerDetailView.as_view(), name="worker-detail"),

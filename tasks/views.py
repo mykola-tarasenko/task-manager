@@ -4,6 +4,9 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
+from tasks.forms import (
+    TeamForm,
+)
 from tasks.models import (
     Project,
     Team,
@@ -53,6 +56,12 @@ class PositionDetailView(LoginRequiredMixin, generic.DetailView):
 class TeamListView(LoginRequiredMixin, generic.ListView):
     model = Team
     paginate_by = 5
+
+
+class TeamCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Team
+    form_class = TeamForm
+    success_url = reverse_lazy("tasks:team-list")
 
 
 class TeamDetailView(LoginRequiredMixin, generic.DetailView):

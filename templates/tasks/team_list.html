@@ -3,6 +3,9 @@
 {% block content %}
   <h1>
     Team List
+    <a href="{% url 'tasks:team-create' %}" class="btn btn-primary">
+      Create
+    </a>
   </h1>
 
   {% if team_list %}
