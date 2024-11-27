@@ -89,6 +89,12 @@ class ProjectListView(LoginRequiredMixin, generic.ListView):
     paginate_by = 5
 
 
+class ProjectCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Project
+    fields = "__all__"
+    success_url = reverse_lazy("tasks:project-list")
+
+
 class ProjectDetailView(LoginRequiredMixin, generic.DetailView):
     model = Project
 
