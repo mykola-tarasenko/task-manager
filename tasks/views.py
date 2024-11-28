@@ -7,6 +7,7 @@ from django.views import generic
 from tasks.forms import (
     TeamForm,
     WorkerCreationForm,
+    TaskForm,
 )
 from tasks.models import (
     Project,
@@ -122,6 +123,12 @@ class TaskTypeDetailView(LoginRequiredMixin, generic.DetailView):
 class TaskListView(LoginRequiredMixin, generic.ListView):
     model = Task
     paginate_by = 5
+
+
+class TaskCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Task
+    form_class = TaskForm
+    success_url = reverse_lazy("tasks:task-list")
 
 
 class TaskDetailView(LoginRequiredMixin, generic.DetailView):
