@@ -13,8 +13,6 @@
       <tr>
         <th>ID</th>
         <th>Username</th>
-        <th>First name</th>
-        <th>Last name</th>
         <th>Position</th>
         <th>Team</th>
       </tr>
@@ -28,16 +26,10 @@
             <a href="{% url 'tasks:worker-detail' pk=worker.id %}">{{ worker }}</a>
           </td>
           <td>
-            {{ worker.first_name }}
+            {% if worker.position %}{{ worker.position }}{% else %}-{% endif %}
           </td>
           <td>
-            {{ worker.last_name }}
-          </td>
-          <td>
-            {{ worker.position }}
-          </td>
-          <td>
-            {{ worker.team }}
+            {% if worker.team %}{{ worker.team }}{% else %}-{% endif %}
           </td>
         </tr>
       {% endfor %}
