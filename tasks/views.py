@@ -72,6 +72,12 @@ class TeamCreateView(LoginRequiredMixin, generic.CreateView):
     success_url = reverse_lazy("tasks:team-list")
 
 
+class TeamUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Team
+    form_class = TeamForm
+    success_url = reverse_lazy("tasks:team-list")
+
+
 class TeamDetailView(LoginRequiredMixin, generic.DetailView):
     model = Team
 
