@@ -5,9 +5,9 @@
     {{ task.name }}
   </h1>
 
-  <p><strong>Status:</strong> {{ task.status }}</p>
+  <p><strong>Priority:</strong> {{ task.get_priority_display }}</p>
+  <p><strong>Status:</strong> {{ task.get_status_display }}</p>
   <p><strong>Deadline:</strong> {{ task.deadline }}</p>
-  <p><strong>Priority:</strong> {{ task.priority }}</p>
   <p><strong>Task type:</strong> <a href="{% url 'tasks:task-type-detail' pk=task.task_type.id %}">{{ task.task_type }}</a></p>
   <p><strong>Project:</strong> <a href="{% url 'tasks:project-detail' pk=task.project.id %} ">{{ task.project }}</a></p>
   <p><strong>Description:</strong></p>

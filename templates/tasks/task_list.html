@@ -10,10 +10,9 @@
       <tr>
         <th>ID</th>
         <th>Name</th>
-        <th>Description</th>
-        <th>Deadline</th>
-        <th>Status</th>
         <th>Priority</th>
+        <th>Status</th>
+        <th>Deadline</th>
         <th>Task type</th>
         <th>Project</th>
       </tr>
@@ -27,16 +26,13 @@
             <a href="{% url 'tasks:task-detail' pk=task.id %}">{{ task.name }}</a>
           </td>
           <td>
-            {{ task.description }}
+            {{ task.get_priority_display }}
+          </td>
+          <td>
+            {{ task.get_status_display }}
           </td>
           <td>
             {{ task.deadline }}
-          </td>
-          <td>
-            {{ task.status }}
-          </td>
-          <td>
-            {{ task.priority }}
           </td>
           <td>
             {{ task.task_type }}
