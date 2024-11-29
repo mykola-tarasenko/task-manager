@@ -3,6 +3,10 @@
 {% block content %}
   <h1>
     {{ worker }}
+    <a href="{% url 'tasks:worker-delete' pk=worker.id %}" class="btn btn-danger link-to-page">
+      Delete
+    </a>
+
     <a href="{% url 'tasks:worker-update' pk=worker.id %}" class="btn btn-secondary link-to-page">
       Update
     </a>
@@ -11,7 +15,7 @@
   <hr>
   <p><strong>First name</strong>: {% if worker.first_name %}{{ worker.first_name }}{% else %}-{% endif %}</p>
   <p><strong>Last name</strong>: {% if worker.last_name %}{{ worker.last_name }}{% else %}-{% endif %}</p>
-  <p><strong>Email</strong>: {% if worker.email %}{{ worker.email }}{% else %}-{% endif %}</p>
-  <p><strong>Position:</strong> <a href="{% url 'tasks:position-detail' pk=worker.position.id %}">{{ worker.position.name }}</a></p>
-  <p><strong>Team:</strong> <a href="{% url 'tasks:team-detail' pk=worker.team.id %}">{{ worker.team }}</a></p>
+  <p><strong>Email</strong>: {% if worker.email %}<a href="{% url 'tasks:team-detail' pk=worker.team.id %}">{{ worker.team }}</a>{% else %}-{% endif %}</p>
+  <p><strong>Position:</strong> {% if worker.email %}<a href="{% url 'tasks:position-detail' pk=worker.position.id %}">{{ worker.team }}</a>{% else %}-{% endif %}</p>
+  <p><strong>Team:</strong> {% if worker.team %}<a href="{% url 'tasks:team-detail' pk=worker.team.id %}">{{ worker.team }}</a>{% else %}-{% endif %}</p>
 {% endblock %}
