@@ -97,6 +97,12 @@ class WorkerCreateView(LoginRequiredMixin, generic.CreateView):
     success_url = reverse_lazy("tasks:worker-list")
 
 
+class WorkerUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Worker
+    fields = ("position", "team",)
+    success_url = reverse_lazy("tasks:worker-list")
+
+
 class ProjectListView(LoginRequiredMixin, generic.ListView):
     model = Project
     paginate_by = 5
