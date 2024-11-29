@@ -3,6 +3,9 @@
 {% block content %}
   <h1>
     {{ task.name }}
+    <a href="{% url 'tasks:task-update' pk=task.id %}" class="btn btn-secondary link-to-page">
+      Update
+    </a>
   </h1>
 
   <hr>

@@ -77,6 +77,7 @@ class TaskForm(forms.ModelForm):
 
     def clean_deadline(self):
         deadline = self.cleaned_data.get("deadline")
-        if deadline and deadline < datetime.date.today():
+        status = self.cleaned_data.get("status")
+        if deadline and deadline < datetime.date.today() and status < 3:
             raise forms.ValidationError("The deadline cannot be in the past.")
         return deadline
