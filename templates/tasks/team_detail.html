@@ -3,6 +3,10 @@
 {% block content %}
   <h1>
     {{ team.name }}
+    <a href="{% url 'tasks:team-delete' pk=team.id %}" class="btn btn-danger link-to-page">
+      Delete
+    </a>
+
     <a href="{% url 'tasks:team-update' pk=team.id %}" class="btn btn-secondary link-to-page">
       Update
     </a>
