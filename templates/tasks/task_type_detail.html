@@ -3,6 +3,10 @@
 {% block content %}
   <h1>
     {{ task_type.name }}
+    <a href="{% url 'tasks:task-type-delete' pk=task_type.id %}" class="btn btn-danger link-to-page">
+      Delete
+    </a>
+
     <a href="{% url 'tasks:task-type-update' pk=task_type.id %}" class="btn btn-secondary link-to-page">
       Update
     </a>
