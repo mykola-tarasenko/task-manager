@@ -19,5 +19,5 @@
   <p><strong>Task type:</strong> <a href="{% url 'tasks:task-type-detail' pk=task.task_type.id %}">{{ task.task_type }}</a></p>
   <p><strong>Project:</strong> <a href="{% url 'tasks:project-detail' pk=task.project.id %} ">{{ task.project }}</a></p>
   <p><strong>Description:</strong></p>
-  <p>{{ task.description }}</p>
+  <p>{% if task.description %}{{ task.description }}{% else %}No description provided{% endif %}</p>
 {% endblock %}
