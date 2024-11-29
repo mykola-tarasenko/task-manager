@@ -138,6 +138,13 @@ class TaskTypeCreateView(LoginRequiredMixin, generic.CreateView):
     success_url = reverse_lazy("tasks:task-type-list")
 
 
+class TaskTypeUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = TaskType
+    template_name = "tasks/task_type_form.html"
+    fields = ("name",)
+    success_url = reverse_lazy("tasks:task-type-list")
+
+
 class TaskTypeDetailView(LoginRequiredMixin, generic.DetailView):
     model = TaskType
     context_object_name = "task_type"
