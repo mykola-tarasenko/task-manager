@@ -64,7 +64,7 @@ class TeamForm(forms.ModelForm):
 class WorkerCreationForm(forms.ModelForm):
     class Meta(UserCreationForm.Meta):
         model = Worker
-        fields = UserCreationForm.Meta.fields + ("position", "team",)
+        fields = UserCreationForm.Meta.fields + ("position", "team", "first_name", "last_name", "email")
 
 
 class TaskForm(forms.ModelForm):
