@@ -99,7 +99,7 @@ class WorkerCreateView(LoginRequiredMixin, generic.CreateView):
 
 class WorkerUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Worker
-    fields = ("position", "team",)
+    fields = ("username", "first_name", "last_name", "email", "position", "team",)
     success_url = reverse_lazy("tasks:worker-list")
 
 
