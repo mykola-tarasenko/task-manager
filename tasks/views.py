@@ -8,7 +8,9 @@ from django.views import generic
 from tasks.forms import (
     TeamForm,
     WorkerCreationForm,
-    TaskForm, PositionNameSearchForm,
+    TaskForm,
+    PositionNameSearchForm,
+    TeamNameSearchForm,
 )
 from tasks.models import (
     Project,
@@ -91,6 +93,27 @@ class PositionDetailView(LoginRequiredMixin, generic.DetailView):
 class TeamListView(LoginRequiredMixin, generic.ListView):
     model = Team
     paginate_by = 5
+
+    def get_context_data(self, *, object_list=None, **kwargs) -> dict:
+        context = super(TeamListView, self).get_context_data(**kwargs)
+
+        name = self.request.GET.get("name", "")
+
+        context["search_form"] = PositionNameSearchForm(
+            initial={"name": name}
+        )
+        return context
+
+    def get_queryset(self) -> QuerySet:
+        queryset = Team.objects.all()
+        form = TeamNameSearchForm(self.request.GET)
+
+        if form.is_valid():
+            return queryset.filter(
+                name__icontains=form.cleaned_data["name"]
+            )
+
+        return queryset
 
 
 class TeamCreateView(LoginRequiredMixin, generic.CreateView):

@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+  {% include "includes/search_form.html" %}
   <h1>
     Team List
     <a href="{% url 'tasks:team-create' %}" class="btn btn-primary">
