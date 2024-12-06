@@ -81,3 +81,16 @@ class TaskForm(forms.ModelForm):
         if deadline and deadline < datetime.date.today() and status < 3:
             raise forms.ValidationError("The deadline cannot be in the past.")
         return deadline
+
+
+class PositionNameSearchForm(forms.Form):
+    name = forms.CharField(
+        max_length=255,
+        required=False,
+        label="",
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Search by name",
+            }
+        )
+    )
