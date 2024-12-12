@@ -10,7 +10,7 @@ from tasks.forms import (
     WorkerCreationForm,
     TaskForm,
     PositionNameSearchForm,
-    TeamNameSearchForm, WorkerUsernameSearchForm,
+    TeamNameSearchForm, WorkerUsernameSearchForm, ProjectNameSearchForm,
 )
 from tasks.models import (
     Project,
@@ -187,6 +187,27 @@ class WorkerDeleteView(LoginRequiredMixin, generic.DeleteView):
 class ProjectListView(LoginRequiredMixin, generic.ListView):
     model = Project
     paginate_by = 5
+
+    def get_context_data(self, *, object_list=None, **kwargs) -> dict:
+        context = super(ProjectListView, self).get_context_data(**kwargs)
+
+        name = self.request.GET.get("name", "")
+
+        context["search_form"] = ProjectNameSearchForm(
+            initial={"name": name}
+        )
+        return context
+
+    def get_queryset(self) -> QuerySet:
+        queryset = Project.objects.all()
+        form = ProjectNameSearchForm(self.request.GET)
+
+        if form.is_valid():
+            return queryset.filter(
+                name__icontains=form.cleaned_data["name"]
+            )
+
+        return queryset
 
 
 class ProjectCreateView(LoginRequiredMixin, generic.CreateView):
