@@ -10,7 +10,9 @@ from tasks.forms import (
     WorkerCreationForm,
     TaskForm,
     PositionNameSearchForm,
-    TeamNameSearchForm, WorkerUsernameSearchForm, ProjectNameSearchForm,
+    TeamNameSearchForm,
+    WorkerUsernameSearchForm,
+    ProjectNameSearchForm,
 )
 from tasks.models import (
     Project,
