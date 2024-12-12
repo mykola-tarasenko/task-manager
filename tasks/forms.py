@@ -107,3 +107,16 @@ class TeamNameSearchForm(forms.Form):
             }
         )
     )
+
+
+class WorkerUsernameSearchForm(forms.Form):
+    username = forms.CharField(
+        max_length=150,
+        required=False,
+        label="",
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Search by username",
+            }
+        )
+    )
