@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+  {% include "includes/search_form.html" %}
   <h1>
     Task List
     <a href="{% url 'tasks:task-create' %}" class="btn btn-primary">
