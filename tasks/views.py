@@ -156,7 +156,7 @@ class WorkerListView(LoginRequiredMixin, generic.ListView):
         return context
 
     def get_queryset(self) -> QuerySet:
-        queryset = Worker.objects.all()
+        queryset = Worker.objects.select_related("position", "team")
         form = WorkerUsernameSearchForm(self.request.GET)
 
         if form.is_valid():
@@ -203,7 +203,7 @@ class ProjectListView(LoginRequiredMixin, generic.ListView):
         return context
 
     def get_queryset(self) -> QuerySet:
-        queryset = Project.objects.all()
+        queryset = Project.objects.prefetch_related("teams")
         form = ProjectNameSearchForm(self.request.GET)
 
         if form.is_valid():
@@ -304,7 +304,7 @@ class TaskListView(LoginRequiredMixin, generic.ListView):
         return context
 
     def get_queryset(self) -> QuerySet:
-        queryset = Task.objects.all()
+        queryset = Task.objects.select_related("task_type", "project")
         form = TaskNameSearchForm(self.request.GET)
 
         if form.is_valid():
