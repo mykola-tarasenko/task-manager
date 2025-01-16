@@ -1,53 +1,65 @@
-{% extends "base.html" %}
+{% extends 'layouts/base-presentation.html' %}
+
+{% block body_class %} index-page {% endblock body_class %}
 
 {% block content %}
+
   {% include "includes/search_form.html" %}
-  <h1>
-    Task List
-    <a href="{% url 'tasks:task-create' %}" class="btn btn-primary">
-      Create
-    </a>
-  </h1>
 
-  {% if task_list %}
-    <table class="table">
-      <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Priority</th>
-        <th>Status</th>
-        <th>Deadline</th>
-        <th>Task type</th>
-        <th>Project</th>
-      </tr>
+  <div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center">
+      <h1 class="text-gradient text-primary">Task List</h1>
+      <a href="{% url 'tasks:task-create' %}" class="btn btn-primary">
+        Create Task
+      </a>
+    </div>
+  </div>
 
-      {% for task in task_list %}
-        <tr>
-          <td>
-            {{ task.id }}
-          </td>
-          <td>
-            <a href="{% url 'tasks:task-detail' pk=task.id %}">{{ task.name }}</a>
-          </td>
-          <td>
-            {{ task.get_priority_display }}
-          </td>
-          <td>
-            {{ task.get_status_display }}
-          </td>
-          <td>
-            {{ task.deadline }}
-          </td>
-          <td>
-            {{ task.task_type }}
-          </td>
-          <td>
-            {{ task.project }}
-          </td>
-        </tr>
-      {% endfor %}
-    </table>
-  {% else %}
-    <p>There are no tasks in the service.</p>
-  {% endif %}
+  <!-- Task Table -->
+  <div class="container mt-4">
+    <div class="card">
+      <div class="card-header pb-0">
+        <h6 class="text-uppercase text-secondary font-weight-bolder">Overview</h6>
+      </div>
+      <div class="card-body px-3 pt-0 pb-2">
+        {% if task_list %}
+          <div class="table-responsive p-3">
+            <table class="table align-items-center table-hover table-bordered mb-0 w-100">
+              <thead class="bg-light">
+                <tr>
+                  <th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7">ID</th>
+                  <th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7">Name</th>
+                  <th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7">Priority</th>
+                  <th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7">Status</th>
+                  <th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7">Deadline</th>
+                  <th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7">Task Type</th>
+                  <th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7">Project</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for task in task_list %}
+                  <tr>
+                    <td class="text-s font-weight-bold">{{ task.id }}</td>
+                    <td class="text-s font-weight-bold">
+                      <a href="{% url 'tasks:task-detail' pk=task.id %}" class="text-primary text-gradient">
+                        {{ task.name }}
+                      </a>
+                    </td>
+                    <td class="text-s font-weight-bold">{{ task.get_priority_display }}</td>
+                    <td class="text-s font-weight-bold">{{ task.get_status_display }}</td>
+                    <td class="text-s font-weight-bold">{{ task.deadline }}</td>
+                    <td class="text-s font-weight-bold">{{ task.task_type }}</td>
+                    <td class="text-s font-weight-bold">{{ task.project }}</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        {% else %}
+          <p class="text-center text-muted my-4">There are no tasks in the service.</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
 {% endblock %}
