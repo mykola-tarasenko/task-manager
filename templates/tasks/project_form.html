@@ -1,12 +1,21 @@
-{% extends "base.html" %}
+{% extends "layouts/base-presentation.html" %}
 {% load crispy_forms_filters %}
 
 {% block content %}
-  <h1>{{ object|yesno:"Update,Create" }} project</h1>
-  <form action="" method="post" novalidate>
-    {% csrf_token %}
-    {{ form|crispy }}
-
-    <input type="submit" value="Submit" class="btn btn-primary">
-  </form>
+<div class="container" style="margin-top: 6rem;">
+  <div class="card">
+    <div class="card-header text-left">
+      <h3 class="font-weight-bolder text-gradient-primary">{{ object|yesno:"Update,Create" }} project</h3>
+    </div>
+    <div class="card-body">
+      <form action="" method="post" novalidate>
+        {% csrf_token %}
+        {{ form|crispy }}
+        <div class="d-flex justify-content-center mt-4">
+          <input type="submit" value="Submit" class="btn btn-lg bg-gradient-primary w-50">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 {% endblock %}
