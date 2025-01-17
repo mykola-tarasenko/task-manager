@@ -36,7 +36,7 @@
                     <td class="text-s font-weight-bold">{{ worker.id }}</td>
                     <td class="text-s font-weight-bold">
                       <a href="{% url 'tasks:worker-detail' pk=worker.id %}" class="text-primary text-gradient">
-                        {{ worker.username }}
+                        {{ worker }}
                       </a>
                     </td>
                     <td class="text-s font-weight-bold">{% if worker.position %}{{ worker.position }}{% else %}-{% endif %}</td>

@@ -39,7 +39,7 @@
                     <td class="text-s font-weight-bold">{{ task.id }}</td>
                     <td class="text-s font-weight-bold">
                       <a href="{% url 'tasks:task-detail' pk=task.id %}" class="text-primary text-gradient">
-                        {{ task.name }}
+                        {{ task }}
                       </a>
                     </td>
                     <td class="text-s font-weight-bold">{{ task.get_priority_display }}</td>

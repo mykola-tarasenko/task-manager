@@ -5,7 +5,7 @@
   <div class="card">
     <div class="card-header pb-0">
       <h3 class="font-weight-bolder text-gradient-primary d-flex justify-content-between align-items-center">
-        {{ team.name }}
+        {{ team }}
         <div>
           <a href="{% url 'tasks:team-update' pk=team.id %}" class="btn btn-secondary btn-sm">
             <i class="fas fa-edit"></i> Update
@@ -38,7 +38,7 @@
           <ul class="list-group list-group-flush">
             {% for project in team.projects.all %}
               <li class="list-group-item">
-                <a href="{% url 'tasks:project-detail' pk=project.id %}" class="text-primary">{{ project.name }}</a>
+                <a href="{% url 'tasks:project-detail' pk=project.id %}" class="text-primary">{{ project }}</a>
               </li>
             {% endfor %}
           </ul>

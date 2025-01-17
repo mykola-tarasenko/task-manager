@@ -35,7 +35,7 @@
                     <td class="text-s font-weight-bold">{{ project.id }}</td>
                     <td class="text-s font-weight-bold">
                       <a href="{% url 'tasks:project-detail' pk=project.id %}" class="text-primary text-gradient">
-                        {{ project.name }}
+                        {{ project }}
                       </a>
                     </td>
                     <td class="text-s font-weight-bold">{{ project.teams.count }}</td>
