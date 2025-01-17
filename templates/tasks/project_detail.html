@@ -1,29 +1,48 @@
-{% extends "base.html" %}
+{% extends "layouts/base-presentation.html" %}
 
 {% block content %}
-  <h1>
-    {{ project.name }}
-    <a href="{% url 'tasks:project-delete' pk=project.id %}" class="btn btn-danger link-to-page">
-      Delete
-    </a>
-
-    <a href="{% url 'tasks:project-update' pk=project.id %}" class="btn btn-secondary link-to-page">
-      Update
-    </a>
-  </h1>
-
-  <hr>
-  <p><strong>Description:</strong></p>
-  <p>{{ project.description }}</p>
-  <hr>
-  {% if project.teams.all %}
-    <p><strong>Teams working on it:</strong></p>
-    <ul>
-      {% for team in project.teams.all %}
-        <li><a href="{% url 'tasks:team-detail' pk=team.id %}">{{ team.name }}</a></li>
-      {% endfor %}
-    </ul>
-  {% else %}
-    <p>There are no teams working on it!</p>
-  {% endif %}
+<div class="container" style="margin-top: 6rem;">
+  <div class="card">
+    <div class="card-header pb-0">
+      <h3 class="font-weight-bolder text-gradient-primary d-flex justify-content-between align-items-center">
+        {{ project.name }}
+        <div>
+          <a href="{% url 'tasks:project-update' pk=project.id %}" class="btn btn-secondary btn-sm">
+            <i class="fas fa-edit"></i> Update
+          </a>
+          <a href="{% url 'tasks:project-delete' pk=project.id %}" class="btn btn-danger btn-sm">
+            <i class="fas fa-trash"></i> Delete
+          </a>
+        </div>
+      </h3>
+    </div>
+    <div class="card-body">
+      <div class="mb-4">
+        <h5 class="font-weight-bold">Description:</h5>
+        <p class="text-muted">
+          {% if project.description %}
+            {{ project.description }}
+          {% else %}
+            No description provided.
+          {% endif %}
+        </p>
+      </div>
+      <hr>
+      <div>
+        <h5 class="font-weight-bold">Teams Working on It:</h5>
+        {% if project.teams.all %}
+          <ul class="list-group list-group-flush">
+            {% for team in project.teams.all %}
+              <li class="list-group-item">
+                <a href="{% url 'tasks:team-detail' pk=team.id %}" class="text-primary">{{ team.name }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p class="text-muted">There are no teams working on it!</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}

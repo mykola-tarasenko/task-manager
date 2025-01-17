@@ -44,7 +44,7 @@
                     </td>
                     <td class="text-s font-weight-bold">{{ task.get_priority_display }}</td>
                     <td class="text-s font-weight-bold">{{ task.get_status_display }}</td>
-                    <td class="text-s font-weight-bold">{{ task.deadline }}</td>
+                    <td class="text-s font-weight-bold">{{ task.deadline|date:"d M Y" }}</td>
                     <td class="text-s font-weight-bold">{{ task.task_type }}</td>
                     <td class="text-s font-weight-bold">{{ task.project }}</td>
                   </tr>
