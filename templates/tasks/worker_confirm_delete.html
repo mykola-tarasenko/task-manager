@@ -1,9 +1,19 @@
-{% extends "base.html" %}
+{% extends "layouts/base-presentation.html" %}
 
 {% block content %}
-  <h1>Delete worker?</h1>
-  <form action="" method="post">
-    {% csrf_token %}
-    <input type="submit" value="Yes" class="btn btn-danger">
-  </form>
+<div class="container" style="margin-top: 6rem;">
+  <div class="card">
+    <div class="card-header text-center">
+      <h3 class="font-weight-bolder text-gradient-danger">Delete worker {{ worker.username }}?</h3>
+    </div>
+    <div class="card-body">
+      <form action="" method="post">
+        {% csrf_token %}
+        <div class="d-flex justify-content-center mt-4">
+          <input type="submit" value="Yes" class="btn btn-lg bg-gradient-danger w-50">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 {% endblock %}

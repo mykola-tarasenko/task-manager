@@ -281,6 +281,7 @@ class TaskTypeDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = TaskType
     template_name = "tasks/task_type_confirm_delete.html"
     success_url = reverse_lazy("tasks:task-type-list")
+    context_object_name = "task_type"
 
 
 class TaskTypeDetailView(LoginRequiredMixin, generic.DetailView):
