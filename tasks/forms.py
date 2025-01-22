@@ -64,7 +64,13 @@ class TeamForm(forms.ModelForm):
 class WorkerCreationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = Worker
-        fields = UserCreationForm.Meta.fields + ("position", "team", "first_name", "last_name", "email")
+        fields = UserCreationForm.Meta.fields + (
+            "position",
+            "team",
+            "first_name",
+            "last_name",
+            "email",
+        )
 
 
 class TaskForm(forms.ModelForm):
@@ -72,7 +78,12 @@ class TaskForm(forms.ModelForm):
         model = Task
         fields = "__all__"
         widgets = {
-            "deadline": forms.DateInput(attrs={"type": "date", "class": "form-control"}),
+            "deadline": forms.DateInput(
+                attrs={
+                    "type": "date",
+                    "class": "form-control",
+                }
+            ),
         }
 
     def clean_deadline(self):
@@ -92,7 +103,7 @@ class PositionNameSearchForm(forms.Form):
             attrs={
                 "placeholder": "Search by name",
             }
-        )
+        ),
     )
 
 
@@ -105,7 +116,7 @@ class TeamNameSearchForm(forms.Form):
             attrs={
                 "placeholder": "Search by name",
             }
-        )
+        ),
     )
 
 
@@ -118,7 +129,7 @@ class WorkerUsernameSearchForm(forms.Form):
             attrs={
                 "placeholder": "Search by username",
             }
-        )
+        ),
     )
 
 
@@ -131,7 +142,7 @@ class ProjectNameSearchForm(forms.Form):
             attrs={
                 "placeholder": "Search by name",
             }
-        )
+        ),
     )
 
 
@@ -144,7 +155,7 @@ class TaskTypeNameSearchForm(forms.Form):
             attrs={
                 "placeholder": "Search by name",
             }
-        )
+        ),
     )
 
 
@@ -157,5 +168,5 @@ class TaskNameSearchForm(forms.Form):
             attrs={
                 "placeholder": "Search by name",
             }
-        )
+        ),
     )

@@ -28,14 +28,10 @@ class Worker(AbstractUser):
         on_delete=models.SET_NULL,
         blank=True,
         null=True,
-        related_name="workers"
+        related_name="workers",
     )
     team = models.ForeignKey(
-        Team,
-        on_delete=models.SET_NULL,
-        blank=True,
-        null=True,
-        related_name="members"
+        Team, on_delete=models.SET_NULL, blank=True, null=True, related_name="members"
     )
 
     class Meta:
@@ -70,20 +66,20 @@ class TaskType(models.Model):
 class Task(models.Model):
     name = models.CharField(max_length=255)
     priority = models.IntegerField(
-        choices=[
+        choices=(
             (1, "Urgent"),
             (2, "High"),
             (3, "Medium"),
             (4, "Low"),
-        ],
+        ),
         default=4,
     )
     status = models.IntegerField(
-        choices=[
-        (1, "Pending"),
-        (2, "In progress"),
-        (3, "Completed"),
-        ],
+        choices=(
+            (1, "Pending"),
+            (2, "In progress"),
+            (3, "Completed"),
+        ),
         default=1,
     )
     deadline = models.DateField(null=True, blank=True)
@@ -100,7 +96,14 @@ class Task(models.Model):
     description = models.TextField(null=True, blank=True)
 
     class Meta:
-        ordering = ("name", "priority", "status", "deadline", "task_type", "project",)
+        ordering = (
+            "name",
+            "priority",
+            "status",
+            "deadline",
+            "task_type",
+            "project",
+        )
 
     def __str__(self):
         return self.name

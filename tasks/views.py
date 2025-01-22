@@ -56,9 +56,7 @@ class PositionListView(LoginRequiredMixin, generic.ListView):
 
         name = self.request.GET.get("name", "")
 
-        context["search_form"] = PositionNameSearchForm(
-            initial={"name": name}
-        )
+        context["search_form"] = PositionNameSearchForm(initial={"name": name})
         return context
 
     def get_queryset(self) -> QuerySet:
@@ -66,9 +64,7 @@ class PositionListView(LoginRequiredMixin, generic.ListView):
         form = PositionNameSearchForm(self.request.GET)
 
         if form.is_valid():
-            return queryset.filter(
-                name__icontains=form.cleaned_data["name"]
-            )
+            return queryset.filter(name__icontains=form.cleaned_data["name"])
 
         return queryset
 
@@ -103,9 +99,7 @@ class TeamListView(LoginRequiredMixin, generic.ListView):
 
         name = self.request.GET.get("name", "")
 
-        context["search_form"] = TeamNameSearchForm(
-            initial={"name": name}
-        )
+        context["search_form"] = TeamNameSearchForm(initial={"name": name})
         return context
 
     def get_queryset(self) -> QuerySet:
@@ -113,9 +107,7 @@ class TeamListView(LoginRequiredMixin, generic.ListView):
         form = TeamNameSearchForm(self.request.GET)
 
         if form.is_valid():
-            return queryset.filter(
-                name__icontains=form.cleaned_data["name"]
-            )
+            return queryset.filter(name__icontains=form.cleaned_data["name"])
 
         return queryset
 
@@ -160,9 +152,7 @@ class WorkerListView(LoginRequiredMixin, generic.ListView):
         form = WorkerUsernameSearchForm(self.request.GET)
 
         if form.is_valid():
-            return queryset.filter(
-                username__icontains=form.cleaned_data["username"]
-            )
+            return queryset.filter(username__icontains=form.cleaned_data["username"])
 
         return queryset
 
@@ -179,7 +169,14 @@ class WorkerCreateView(LoginRequiredMixin, generic.CreateView):
 
 class WorkerUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Worker
-    fields = ("username", "first_name", "last_name", "email", "position", "team",)
+    fields = (
+        "username",
+        "first_name",
+        "last_name",
+        "email",
+        "position",
+        "team",
+    )
     success_url = reverse_lazy("tasks:worker-list")
 
 
@@ -197,9 +194,7 @@ class ProjectListView(LoginRequiredMixin, generic.ListView):
 
         name = self.request.GET.get("name", "")
 
-        context["search_form"] = ProjectNameSearchForm(
-            initial={"name": name}
-        )
+        context["search_form"] = ProjectNameSearchForm(initial={"name": name})
         return context
 
     def get_queryset(self) -> QuerySet:
@@ -207,9 +202,7 @@ class ProjectListView(LoginRequiredMixin, generic.ListView):
         form = ProjectNameSearchForm(self.request.GET)
 
         if form.is_valid():
-            return queryset.filter(
-                name__icontains=form.cleaned_data["name"]
-            )
+            return queryset.filter(name__icontains=form.cleaned_data["name"])
 
         return queryset
 
@@ -246,9 +239,7 @@ class TaskTypeListView(LoginRequiredMixin, generic.ListView):
 
         name = self.request.GET.get("name", "")
 
-        context["search_form"] = TaskTypeNameSearchForm(
-            initial={"name": name}
-        )
+        context["search_form"] = TaskTypeNameSearchForm(initial={"name": name})
         return context
 
     def get_queryset(self) -> QuerySet:
@@ -256,9 +247,7 @@ class TaskTypeListView(LoginRequiredMixin, generic.ListView):
         form = TaskTypeNameSearchForm(self.request.GET)
 
         if form.is_valid():
-            return queryset.filter(
-                name__icontains=form.cleaned_data["name"]
-            )
+            return queryset.filter(name__icontains=form.cleaned_data["name"])
 
         return queryset
 
@@ -299,9 +288,7 @@ class TaskListView(LoginRequiredMixin, generic.ListView):
 
         name = self.request.GET.get("name", "")
 
-        context["search_form"] = TaskNameSearchForm(
-            initial={"name": name}
-        )
+        context["search_form"] = TaskNameSearchForm(initial={"name": name})
         return context
 
     def get_queryset(self) -> QuerySet:
@@ -309,9 +296,7 @@ class TaskListView(LoginRequiredMixin, generic.ListView):
         form = TaskNameSearchForm(self.request.GET)
 
         if form.is_valid():
-            return queryset.filter(
-                name__icontains=form.cleaned_data["name"]
-            )
+            return queryset.filter(name__icontains=form.cleaned_data["name"])
 
         return queryset
 

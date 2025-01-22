@@ -24,7 +24,7 @@ class ModelsTest(TestCase):
             username="testuser",
             password="test1test23",
         )
-        self.assertEqual(str(worker),f"@{worker.username}")
+        self.assertEqual(str(worker), f"@{worker.username}")
 
     def test_project_str(self):
         project = Project.objects.create(name="testproject")

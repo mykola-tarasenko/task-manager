@@ -1,65 +1,69 @@
-{% extends "layouts/base-presentation.html" %}
+{% extends "layouts/base-presentation.html"
+
+{% block title %} {{ worker }} worker {% endblock title %}
 
 {% block content %}
-<div class="container nav-gap">
-  <div class="card">
-    <div class="card-header pb-0">
-      <h3 class="font-weight-bolder text-gradient-primary d-flex justify-content-between align-items-center">
-        {{ worker }}
-        <div>
-          <a href="{% url 'tasks:worker-update' pk=worker.id %}" class="btn btn-secondary btn-sm">
-            <i class="fas fa-edit"></i> Update
-          </a>
-          <a href="{% url 'tasks:worker-delete' pk=worker.id %}" class="btn btn-danger btn-sm">
-            <i class="fas fa-trash"></i> Delete
-          </a>
-        </div>
-      </h3>
-    </div>
-    <div class="card-body">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">
-          <strong>First Name:</strong>
-          {% if worker.first_name %}
-            {{ worker.first_name }}
-          {% else %}
-            <span class="text-muted">-</span>
-          {% endif %}
-        </li>
-        <li class="list-group-item">
-          <strong>Last Name:</strong>
-          {% if worker.last_name %}
-            {{ worker.last_name }}
-          {% else %}
-            <span class="text-muted">-</span>
-          {% endif %}
-        </li>
-        <li class="list-group-item">
-          <strong>Email:</strong>
-          {% if worker.email %}
-            <a href="mailto:{{ worker.email }}" class="text-primary">{{ worker.email }}</a>
-          {% else %}
-            <span class="text-muted">-</span>
-          {% endif %}
-        </li>
-        <li class="list-group-item">
-          <strong>Position:</strong>
-          {% if worker.position %}
-            <a href="{% url 'tasks:position-detail' pk=worker.position.id %}" class="text-primary">{{ worker.position }}</a>
-          {% else %}
-            <span class="text-muted">-</span>
-          {% endif %}
-        </li>
-        <li class="list-group-item">
-          <strong>Team:</strong>
-          {% if worker.team %}
-            <a href="{% url 'tasks:team-detail' pk=worker.team.id %}" class="text-primary">{{ worker.team }}</a>
-          {% else %}
-            <span class="text-muted">-</span>
-          {% endif %}
-        </li>
-      </ul>
+
+  <div class="container nav-gap">
+    <div class="card">
+      <div class="card-header pb-0">
+        <h3 class="font-weight-bolder text-gradient-primary d-flex justify-content-between align-items-center">
+          {{ worker }}
+          <div>
+            <a href="{% url 'tasks:worker-update' pk=worker.id %}" class="btn btn-secondary btn-sm">
+              <i class="fas fa-edit"></i> Update
+            </a>
+            <a href="{% url 'tasks:worker-delete' pk=worker.id %}" class="btn btn-danger btn-sm">
+              <i class="fas fa-trash"></i> Delete
+            </a>
+          </div>
+        </h3>
+      </div>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <strong>First Name:</strong>
+            {% if worker.first_name %}
+              {{ worker.first_name }}
+            {% else %}
+              <span class="text-muted">-</span>
+            {% endif %}
+          </li>
+          <li class="list-group-item">
+            <strong>Last Name:</strong>
+            {% if worker.last_name %}
+              {{ worker.last_name }}
+            {% else %}
+              <span class="text-muted">-</span>
+            {% endif %}
+          </li>
+          <li class="list-group-item">
+            <strong>Email:</strong>
+            {% if worker.email %}
+              <a href="mailto:{{ worker.email }}" class="text-primary">{{ worker.email }}</a>
+            {% else %}
+              <span class="text-muted">-</span>
+            {% endif %}
+          </li>
+          <li class="list-group-item">
+            <strong>Position:</strong>
+            {% if worker.position %}
+              <a href="{% url 'tasks:position-detail' pk=worker.position.id %}" class="text-primary">{{ worker.position }}</a>
+            {% else %}
+              <span class="text-muted">-</span>
+            {% endif %}
+          </li>
+          <li class="list-group-item">
+            <strong>Team:</strong>
+            {% if worker.team %}
+              <a href="{% url 'tasks:team-detail' pk=worker.team.id %}" class="text-primary">{{ worker.team }}</a>
+            {% else %}
+              <span class="text-muted">-</span>
+            {% endif %}
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
-</div>
+
 {% endblock %}

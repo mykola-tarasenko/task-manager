@@ -6,6 +6,7 @@ from tasks.models import Position
 
 POSITION_URL = reverse("tasks:position-list")
 
+
 class PublicPositionTest(TestCase):
     def test_login_required(self):
         res = self.client.get(POSITION_URL)
@@ -16,7 +17,7 @@ class PrivatePositionTest(TestCase):
     def setUp(self) -> None:
         self.user = get_user_model().objects.create_superuser(
             username="testuser",
-            password="test1test23"
+            password="test1test23",
         )
         self.client.force_login(self.user)
 

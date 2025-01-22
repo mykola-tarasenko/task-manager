@@ -1,5 +1,6 @@
 <ul class="sidebar-nav list-group">
   {% if user.is_authenticated %}
+
     <li class="list-group-item"><a href="{% url 'tasks:worker-detail' pk=user.id %}">{{ user }}</a></li>
     <li class="list-group-item">
       <form action="{% url 'logout' %}" method="POST">
@@ -7,8 +8,11 @@
         <button class="btn btn-link" type="submit" style="padding: 0px;">Logout</button>
       </form>
     </li>
+
   {% else %}
+
     <li class="list-group-item"><a href="{% url 'login' %}">Login</a></li>
+
   {% endif %}
 
   <br>
