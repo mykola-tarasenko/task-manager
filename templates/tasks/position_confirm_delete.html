@@ -1,0 +1,23 @@
+{% extends "layouts/base-presentation.html" %}
+
+{% block title %} Delete {{ position }} position {% endblock title %}
+
+{% block content %}
+
+  <div class="container nav-gap">
+    <div class="card">
+      <div class="card-header text-center">
+        <h3 class="font-weight-bolder text-gradient-danger">Delete position {{ position }}?</h3>
+      </div>
+      <div class="card-body">
+        <form action="" method="post">
+          {% csrf_token %}
+          <div class="d-flex justify-content-center mt-4">
+            <input type="submit" value="Yes" class="btn btn-lg bg-gradient-danger w-50">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

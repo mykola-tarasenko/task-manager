@@ -1,0 +1,44 @@
+{% load query_transform %}
+
+{% if is_paginated %}
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"/>
+  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+  <link href="{{ ASSETS_ROOT }}/css/nucleo-icons.css" rel="stylesheet"/>
+  <link href="{{ ASSETS_ROOT }}/css/nucleo-svg.css" rel="stylesheet"/>
+  <link href="https://unpkg.com/soft-ui-design-system@1.0.1/assets/css/soft-design-system.min.css" rel="stylesheet"/>
+
+  <section class="pt-3">
+    <div class="container">
+      <div class="row justify-content-center pt-3">
+        <div class="col-auto">
+          <ul class="pagination pagination-primary">
+            {% if page_obj.has_previous %}
+
+              <li class="page-item">
+                <a class="page-link" href="?{% query_transform request page=page_obj.previous_page_number %}" aria-label="Previous">
+                  <span aria-hidden="true"><i class="fa fa-angle-double-left" aria-hidden="true"></i><<</span>
+                </a>
+              </li>
+
+            {% endif %}
+            <li class="page-item active">
+              <span class="page-link">{{ page_obj.number }}</span>
+            </li>
+            {% if page_obj.has_next %}
+
+              <li class="page-item">
+                <a class="page-link" href="?{% query_transform request page=page_obj.next_page_number %}" aria-label="Next">
+                  <span aria-hidden="true"><i class="fa fa-angle-double-right" aria-hidden="true"></i>>></span>
+                </a>
+              </li>
+
+            {% endif %}
+
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endif %}

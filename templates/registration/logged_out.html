@@ -1,0 +1,21 @@
+{% extends "layouts/base-fullscreen.html" %}
+
+{% block content %}
+
+  <div class="container" style="margin-top: 6rem;">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-8 col-sm-12">
+        <div class="card shadow-lg">
+          <div class="card-header text-center">
+            <h3>You have logged out!</h3>
+          </div>
+          <div class="card-body text-center">
+            <p class="mb-4">Your session has ended. If you want to log in again, please click the button below.</p>
+            <a href="{% url 'login' %}" class="btn btn-primary btn-lg">Click here to login again</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
